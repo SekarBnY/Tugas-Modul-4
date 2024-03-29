@@ -33,6 +33,16 @@ def create_products():
         Product(6, "Jacket", 60),
         Product(7, "Pants", 30),
         Product(8, "Watch", 70),
+        Product(9, "Backpack", 50),
+        Product(10, "Belt", 20),
+        Product(11, "Scarf", 15),
+        Product(12, "Sunglasses", 30),
+        Product(13, "Gloves", 25),
+        Product(14, "Dress", 45),
+        Product(15, "Sandals", 35),
+        Product(16, "Skirt", 25),
+        Product(17, "Sweater", 55),
+        Product(18, "Boots", 65)
     ]
     return products
 
@@ -54,8 +64,10 @@ class ShoppingCartApplication:
             label_text = f"{product.number}. {product.name}: ${product.price:.2f}"
             label = tk.Label(self.master, text=label_text)
             label.grid(row=product.number, column=0, sticky="w")
-            button = tk.Button(self.master, text="Add", command=lambda p=product: self.add_to_cart(p))
-            button.grid(row=product.number, column=1)
+            add_button = tk.Button(self.master, text="Add", command=lambda p=product: self.add_to_cart(p), bg="blue")
+            add_button.grid(row=product.number, column=1)
+            remove_button = tk.Button(self.master, text="Remove", command=self.remove_item, bg="red")
+            remove_button.grid(row=product.number, column=2)
 
         # Create a text area for displaying the cart
         self.cart_text.grid(row=len(self.products) + 1, column=0, columnspan=3)
@@ -65,12 +77,12 @@ class ShoppingCartApplication:
         tk.Label(self.master, textvariable=self.total_text).grid(row=len(self.products) + 2, column=1)
 
         # Create a button for calculating the total cost
-        tk.Button(self.master, text="Calculate Total", command=self.calculate_total).grid(row=len(self.products) + 3, column=0, columnspan=2)
+        tk.Button(self.master, text="Calculate Total", command=self.calculate_total, bg="green").grid(row=len(self.products) + 3, column=0, columnspan=2)
 
         # Create an entry and button for removing an item
         self.remove_index_entry = tk.Entry(self.master)
         self.remove_index_entry.grid(row=len(self.products) + 4, column=0)
-        tk.Button(self.master, text="Remove Item", command=self.remove_item).grid(row=len(self.products) + 4, column=1)
+        tk.Button(self.master, text="Remove Item", command=self.remove_item, bg="red").grid(row=len(self.products) + 4, column=1)
 
     def add_to_cart(self, product):
         self.cart.add_item(product)
