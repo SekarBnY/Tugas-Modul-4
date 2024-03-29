@@ -66,7 +66,7 @@ if __name__ == "__main__":
         else:
             print("Invalid input. Please enter a valid product number.")
 
-    # Display items in the cart
+    # Display items in the carts
     cart.display_cart()
 
     # Calculate and display total cost
