@@ -11,4 +11,5 @@ Kelompok 23
 Jibran Analta Putra (21120123140170)
 Sekar Bestari Nindita Yasmin (21120123130072)
 Abdullah Fatih Azzam (21120123140118)
+Jaziel Abyaz Audrio (21120123130107)
 
