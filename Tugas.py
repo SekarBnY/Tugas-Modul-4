@@ -31,11 +31,11 @@ class Product:
 # Function with return type untuk membuat produk
 def create_products():
     products = [
-        Product("Shoes", 50),
-        Product("T-shirt", 20),
+        Product("sepatu", 50),
+        Product("kaos", 20),
         Product("Jeans", 40),
-        Product("Hat", 15),
-        Product("Socks", 10)
+        Product("topi", 15),
+        Product("kaos kaki", 10)
     ]
     return products
 
