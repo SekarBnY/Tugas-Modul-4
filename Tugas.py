@@ -2,12 +2,12 @@ class ShoppingCart:
     def __init__(self):
         self.items = []
 
-    # Method untuk menambahkan barang ke keranjang
+    # Method (non - return type) untuk menambahkan barang ke keranjang
     def add_item(self, item):
         self.items.append(item)
         print(f"{item.name} ditambahkan ke keranjang.")
 
-    # Method untuk menampilkan barang di keranjang
+    # Method (non - return type) untuk menampilkan barang di keranjang
     def display_cart(self):
         if self.items:
             print("Barang dalam keranjang Anda:")
@@ -16,7 +16,7 @@ class ShoppingCart:
         else:
             print("Keranjang Anda kosong.")
 
-    # Method untuk menghitung total biaya
+    # Method (non - return type) untuk menghitung total biaya
     def calculate_total(self):
         total_cost = sum(item.price for item in self.items)
         return total_cost
@@ -26,7 +26,7 @@ class Product:
         self.name = name
         self.price = price
 
-# Fungsi untuk membuat produk
+# Fungsi (return- type) untuk membuat produk
 def create_products():
     products = [
         Product("Sepatu", 50),
