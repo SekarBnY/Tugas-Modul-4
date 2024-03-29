@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     # User interaction to add items to the cart
     while True:
-        choice = input("Enter the number of the product you want to add to cart (0 to exit): ")
+        choice = input("Masukkan nomor produk yang ingin Anda tambahkan ke keranjang (0 to exit): ")
         if choice == '0':
             break
         elif choice.isdigit():
