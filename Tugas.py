@@ -64,9 +64,9 @@ class ShoppingCartApplication:
             label_text = f"{product.number}. {product.name}: ${product.price:.2f}"
             label = tk.Label(self.master, text=label_text)
             label.grid(row=product.number, column=0, sticky="w")
-            add_button = tk.Button(self.master, text="Add", command=lambda p=product: self.add_to_cart(p), bg="blue")
+            add_button = tk.Button(self.master, text="Add", command=lambda p=product: self.add_to_cart(p), bg="blue", fg="white")
             add_button.grid(row=product.number, column=1)
-            remove_button = tk.Button(self.master, text="Remove", command=self.remove_item, bg="red")
+            remove_button = tk.Button(self.master, text="Remove", command=self.remove_item, bg="red", fg="white")
             remove_button.grid(row=product.number, column=2)
 
         # Create a text area for displaying the cart
@@ -77,12 +77,18 @@ class ShoppingCartApplication:
         tk.Label(self.master, textvariable=self.total_text).grid(row=len(self.products) + 2, column=1)
 
         # Create a button for calculating the total cost
-        tk.Button(self.master, text="Calculate Total", command=self.calculate_total, bg="green").grid(row=len(self.products) + 3, column=0, columnspan=2)
+        tk.Button(self.master, text="Calculate Total", command=self.calculate_total, bg="green", fg="white").grid(row=len(self.products) + 3, column=0, columnspan=2)
 
         # Create an entry and button for removing an item
         self.remove_index_entry = tk.Entry(self.master)
         self.remove_index_entry.grid(row=len(self.products) + 4, column=0)
-        tk.Button(self.master, text="Remove Item", command=self.remove_item, bg="red").grid(row=len(self.products) + 4, column=1)
+        tk.Button(self.master, text="Remove Item", command=self.remove_item, bg="red", fg="white").grid(row=len(self.products) + 4, column=1)
+
+        # Label at the bottom
+        bottom_label = tk.Label(self.master, text="Developed by Kelompok 23", fg="white", bg="black")
+        bottom_label.grid(row=len(self.products) + 5, column=0, columnspan=3, pady=10, sticky="we")
+        # Replace hearts with red hearts
+        bottom_label.config(text="Developed by Kelompok 23❤️", compound=tk.CENTER)
 
     def add_to_cart(self, product):
         self.cart.add_item(product)
@@ -109,3 +115,9 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = ShoppingCartApplication(root)
     root.mainloop()
+
+
+
+
+#changes the some text color to white
+#add watermark
