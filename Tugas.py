@@ -2,25 +2,23 @@ class ShoppingCart:
     def __init__(self):
         self.items = []
 
-    # Method (non-return type) untuk meletakkan barang di keranjang
+    # Method untuk menambahkan barang ke keranjang
     def add_item(self, item):
         self.items.append(item)
-        print(f"{item} added to cart.")
+        print(f"{item.name} ditambahkan ke keranjang.")
 
-    # Method (non-return type) untuk display barang di keranjang
+    # Method untuk menampilkan barang di keranjang
     def display_cart(self):
         if self.items:
-            print("Items in your cart:")
+            print("Barang dalam keranjang Anda:")
             for item in self.items:
-                print("-", item)
+                print("-", item.name)
         else:
-            print("Your cart is empty.")
+            print("Keranjang Anda kosong.")
 
-    # Method (non-return type) untuk mengkalkulasi total cost
+    # Method untuk menghitung total biaya
     def calculate_total(self):
-        total_cost = 0
-        for item in self.items:
-            total_cost += item.price
+        total_cost = sum(item.price for item in self.items)
         return total_cost
 
 class Product:
@@ -28,47 +26,41 @@ class Product:
         self.name = name
         self.price = price
 
-# Function with return type untuk membuat produk
+# Fungsi untuk membuat produk
 def create_products():
     products = [
-        Product("sepatu", 50),
-        Product("kaos", 20),
-        Product("Jeans", 40),
-        Product("topi", 15),
-        Product("kaos kaki", 10)
+        Product("Sepatu", 50),
+        Product("Kaos", 20),
+        Product("Celana Jeans", 40),
+        Product("Topi", 15),
+        Product("Kaus Kaki", 10)
     ]
     return products
 
-# Main program
+# Program utama
 if __name__ == "__main__":
-    # Create products
     products = create_products()
 
-    # Initialize shopping cart
     cart = ShoppingCart()
 
-    # Display available products
-    print("Available products:")
+    print("Produk yang tersedia:")
     for idx, product in enumerate(products, start=1):
         print(f"{idx}. {product.name} - ${product.price}")
 
-    # User interaction to add items to the cart
     while True:
-        choice = input("Masukkan nomor produk yang ingin Anda tambahkan ke keranjang (0 to exit): ")
+        choice = input("Masukkan nomor produk yang ingin Anda tambahkan ke keranjang (0 untuk keluar): ")
         if choice == '0':
             break
         elif choice.isdigit():
             choice = int(choice)
             if 1 <= choice <= len(products):
-                cart.add_item(products[choice - 1].name)
+                cart.add_item(products[choice - 1])
             else:
-                print("Invalid choice. Please enter a valid product number.")
+                print("Pilihan tidak valid. Harap masukkan nomor produk yang valid.")
         else:
-            print("Invalid input. Please enter a valid product number.")
+            print("Input tidak valid. Harap masukkan nomor produk yang valid.")
 
-    # Display items in the carts
     cart.display_cart()
 
-    # Calculate and display total cost
     total_cost = cart.calculate_total()
-    print(f"Total cost of your purchases: ${total_cost}")
+    print(f"Total biaya pembelian Anda: ${total_cost}")
