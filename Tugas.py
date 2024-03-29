@@ -16,7 +16,7 @@ class ShoppingCart:
         else:
             print("Your cart is empty.")
 
-    # Method (non-return type) to calculate total cost
+    # Method (non-return type) untuk mengkalkulasi total cost
     def calculate_total(self):
         total_cost = 0
         for item in self.items:
@@ -28,7 +28,7 @@ class Product:
         self.name = name
         self.price = price
 
-# Function with return type to create products
+# Function with return type untuk membuat produk
 def create_products():
     products = [
         Product("Shoes", 50),
