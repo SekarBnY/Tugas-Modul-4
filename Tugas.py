@@ -60,14 +60,20 @@ class ShoppingCartApplication:
 
     def create_widgets(self):
         # Create labels and buttons for adding items
-        for product in self.products:
+        i = 0
+        while i < len(self.products):
+            product = self.products[i]
             label_text = f"{product.number}. {product.name}: ${product.price:.2f}"
             label = tk.Label(self.master, text=label_text)
-            label.grid(row=product.number, column=0, sticky="w")
+            label.grid(row=i + 1, column=0, sticky="w")
+            
             add_button = tk.Button(self.master, text="Add", command=lambda p=product: self.add_to_cart(p), bg="blue", fg="white")
-            add_button.grid(row=product.number, column=1)
+            add_button.grid(row=i + 1, column=1)
+            
             remove_button = tk.Button(self.master, text="Remove", command=self.remove_item, bg="red", fg="white")
-            remove_button.grid(row=product.number, column=2)
+            remove_button.grid(row=i + 1, column=2)
+            
+            i += 1
 
         # Create a text area for displaying the cart
         self.cart_text.grid(row=len(self.products) + 1, column=0, columnspan=3)
@@ -95,12 +101,14 @@ class ShoppingCartApplication:
         self.update_cart_text()
 
     def remove_item(self):
-        try:
-            index = int(self.remove_index_entry.get()) - 1
-            self.cart.remove_item(index)
-            self.update_cart_text()
-        except ValueError:
-            messagebox.showerror("Error", "Please enter a valid product number to remove.")
+        while True:
+            try:
+                index = int(self.remove_index_entry.get()) - 1
+                self.cart.remove_item(index)
+                self.update_cart_text()
+                break
+            except ValueError:
+                messagebox.showerror("Error", "Please enter a valid product number to remove.")
 
     def calculate_total(self):
         total_cost = self.cart.get_total_cost()
@@ -115,9 +123,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = ShoppingCartApplication(root)
     root.mainloop()
-
-
-
-
-#changes the some text color to white
-#add watermark
