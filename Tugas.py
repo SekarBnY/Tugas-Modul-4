@@ -35,14 +35,6 @@ def create_products():
         Product(8, "Watch", 70),
         Product(9, "Backpack", 50),
         Product(10, "Belt", 20),
-        Product(11, "Scarf", 15),
-        Product(12, "Sunglasses", 30),
-        Product(13, "Gloves", 25),
-        Product(14, "Dress", 45),
-        Product(15, "Sandals", 35),
-        Product(16, "Skirt", 25),
-        Product(17, "Sweater", 55),
-        Product(18, "Boots", 65)
     ]
     return products
 
